@@ -111,7 +111,7 @@ const validate = () => {
   if (!form.email) { errors.email = 'Email is required'; valid = false; }
   if (!form.department_id) { errors.department_id = 'Department is required'; valid = false; }
   if (!form.designation) { errors.designation = 'Designation is required'; valid = false; }
-  // Removed salary validation
+  if (!form.salary) { errors.salary = 'Salary is required'; valid = false; }
   if (!form.joined_date) { errors.joined_date = 'Joining date is required'; valid = false; }
   if (!form.address) { errors.address = 'Address is required'; valid = false; }
   return valid;

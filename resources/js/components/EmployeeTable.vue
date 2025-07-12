@@ -128,9 +128,9 @@ const closeForm = () => {
 const saveEmployee = async (form) => {
   try {
     if (isEdit.value && selectedEmployee.value) {
-      await axios.put(`/api/v1/employees/${selectedEmployee.value.id}`, form);
+      await axios.put(`/api/employees/${selectedEmployee.value.id}`, form);
     } else {
-      await axios.post('/api/v1/employees', form);
+      await axios.post('/api/employees', form);
     }
     fetchEmployees();
     showForm.value = false;
@@ -157,7 +157,7 @@ const saveEmployee = async (form) => {
 };
 
 const fetchDepartments = async () => {
-  const res = await axios.get('/api/v1/departments');
+  const res = await axios.get('/api/departments');
   departments.value = res.data.data || res.data;
 };
 
@@ -174,7 +174,7 @@ const fetchEmployees = async () => {
       page: page.value,
       per_page: perPage.value,
     };
-    const res = await axios.get('/api/v1/employees', { params });
+    const res = await axios.get('/api/employees', { params });
     employees.value = res.data.data.data;
     totalPages.value = res.data.data.last_page || 1;
   } finally {
@@ -200,7 +200,7 @@ const changePage = (p) => {
 
 const deleteEmployee = async (id) => {
   if (confirm('Are you sure you want to delete this employee?')) {
-    await axios.delete(`/api/v1/employees/${id}`);
+    await axios.delete(`/api/employees/${id}`);
     fetchEmployees();
     Toastify({
       text: "Employee deleted successfully!",
@@ -255,4 +255,4 @@ onMounted(() => {
 .table th {
   cursor: pointer;
 }
-</style> 
+</style>
